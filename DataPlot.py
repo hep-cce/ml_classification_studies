@@ -31,6 +31,5 @@ if SHOW_PLOT:
 	pixel = np.reshape(pixData, (20, 10, 2), order = 'C')
 	ax[0].imshow(pixel[:,:,0])  # Not sure about imshow of 2/3 channels
 	ax[1].imshow(pixel[:,:,1])	
-print pixel.shape
-
-plt.show()
+	plt.show()
+	print pixel.shape
