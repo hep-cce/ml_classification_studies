@@ -21,14 +21,24 @@ print
 print args.fileIn
 
 
-pixData = np.fromfile(str(args.fileIn))
+pixData = np.fromfile(str(args.fileIn), dtype = np.float32)
 print 'shape', np.shape(pixData)
 
-if (np.shape(pixData)[0] == 200):
-	pixel = np.reshape(pixData, (20, 10), order = 'C')
-	plt.imshow(pixel, )
-else: 
+#if (np.shape(pixData)[0] == 200):
+#	pixel = np.reshape(pixData, (20, 10), order = 'C')
+#	plt.imshow(pixel)
+#	print pixel.shape
+if True:
+	fig,ax = plt.subplots(1,2) 
 	pixel = np.reshape(pixData, (20, 10, 2), order = 'C')
-	plt.imshow(pixel)  # Not sure about imshow of 2/3 channels
+	ax[0].imshow(pixel[:,:,0])  # Not sure about imshow of 2/3 channels
+	ax[1].imshow(pixel[:,:,1])	
+print pixel.shape
 
 plt.show()
+
+# plt.figure(2)
+# plt.imshow( np.sum(pixel, axis = 2))
+
+
+# plt.show()
