@@ -1,6 +1,7 @@
 """  Convert .data files files into (20,10,2) .npy files.
 Randomly shuffles the files and selects 20 per cent of the files for TestData.
 Note: Indices of .npy and .data are NOT the same.
+- Possible issue if all the files are not download - mismatch in json and data files
 """
 
 
