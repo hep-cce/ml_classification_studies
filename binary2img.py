@@ -1,6 +1,5 @@
 """  Convert .data files files into (20,10,2) .npy files.
 Randomly shuffles the files and selects 20 per cent of the files for TestData.
-Training and Test Folders need to be created externally.
 Note: Indices of .npy and .data are NOT the same.
 """
 
@@ -20,8 +19,8 @@ Dir4 = ['lepton/', 'jet/'][lid]
 Dir1 = '/home/nes/Desktop/ConvNetData/atlas/'
 Dir2 = 'subimages/'
 
-fileJson = Dir1+Dir2+'*json'
-fileData = Dir1+Dir2+'*data'
+fileJson = Dir1+Dir2+'*'+labels+'*json'
+fileData = Dir1+Dir2+'*'+labels+'*data'
 
 fileInData = sorted(glob.glob(fileData))
 fileInJson = sorted(glob.glob(fileJson))
@@ -37,7 +36,7 @@ forTest =  alln[:int(0.2*len(fileInData))]
 testind = 0
 trainind = 0
 
-for ind in range(len(fileInJson)):
+for ind in range(len(fileInData)):
     fileInJsonX = fileInJson[ind]
     fileInDataX = fileInData[ind]
 
