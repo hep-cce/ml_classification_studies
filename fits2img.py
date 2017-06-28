@@ -1,5 +1,6 @@
 """  Convert .fits files files into (45,45) .npy files.
 Randomly shuffles the files and selects 20 per cent of the files for TestData.
+Training and Test Folders need to be created externally.
 Note: Indices of .npy and .fits are NOT the same.
 """
 

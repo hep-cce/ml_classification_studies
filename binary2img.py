@@ -1,5 +1,6 @@
 """  Convert .data files files into (20,10,2) .npy files.
 Randomly shuffles the files and selects 20 per cent of the files for TestData.
+Training and Test Folders need to be created externally.
 Note: Indices of .npy and .data are NOT the same.
 """
 
