@@ -11,12 +11,39 @@ from keras.utils import np_utils
 from keras.layers.advanced_activations import LeakyReLU
 from keras.layers.normalization import *
 
-import time
-import glob
-
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
+
+import tensorflow as tf
+
+config = tf.ConfigProto()
+config.gpu_options.allow_growth = True
+session = tf.Session(config=config)
+
+#gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=0.333)
+#sess = tf.Session(config=tf.ConfigProto(gpu_options=gpu_options))
+
+
+if 'session' in locals() and session is not None:
+    print('Close interactive session')
+    session.close()
+
+
+
+gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=0.3)
+sess = tf.Session(config=tf.ConfigProto(allow_soft_placement=True, log_device_placement=True))
+
+
+#print(tf.__version__)
+print(keras.__version__)
+
+import os
+os.environ["KERAS_BACKEND"] = "theano"
+
+import time
+import glob
+
 
 K.set_image_dim_ordering('tf')
 time_i = time.time()
@@ -27,6 +54,8 @@ data_augmentation = True
 batch_size = 32
 num_classes = 2
 num_epoch = 2000
+pre_train_size = 200
+filter_factor = 40
 learning_rate_gen = 1e-4  # Warning: lr and decay vary across optimizers
 learning_rate_dis = 1e-5  # Warning: lr and decay vary across optimizers
 learning_rate_gan = 1e-5  # Warning: lr and decay vary across optimizers
@@ -39,10 +68,10 @@ loss_id = 0 # [mse, mae] # mse is always better
 
 
 
-# Dir0 = '../'
-# Dir1 = Dir0 + '../AllTrainTestSets/Encoder/'
-Dir0 = './'
-Dir1 = '/home/nes/Desktop/ConvNetData/lens/Encoder/'
+Dir0 = '../'
+Dir1 = Dir0 + '../AllTrainTestSets/Encoder/'
+#Dir0 = './'
+#Dir1 = '/home/nes/Desktop/ConvNetData/lens/Encoder/'
 Dir2 = ['single/', 'stack/'][1]
 data_path = Dir1 + Dir2
 
@@ -50,7 +79,7 @@ DirOutType = ['noisy0', 'noisy1', 'noiseless']   # check above too
 
 image_size = img_rows = img_cols = 45
 num_channel = 1
-num_files = 8000
+num_files = 9000
 train_split = 0.8   # 80 percent
 num_train = int(train_split*num_files)
 
@@ -117,7 +146,7 @@ print('y_train shape:', y_train.shape)
 # Build Generative model ...
 
 def Generator():
-    filter_factor = 40
+#    filter_factor = 40
 
     g_input = Input(shape=[100])
     H = Dense( filter_factor*14*14, init='glorot_normal')(g_input)
@@ -185,11 +214,14 @@ opt_gan = Adam(lr=learning_rate_gan, decay=decay_rate)
 GAN.compile(loss='categorical_crossentropy', optimizer= opt_gan)
 GAN.summary()
 
+####################################################################################################
+
+
 
 # Pre-training
 PreTrain = True
 if PreTrain:
-    ntrain = 100
+    ntrain = pre_train_size
     np.random.seed(123)
     trainidx = np.random.randint(0, x_train.shape[0], size = ntrain)
     x_train_selected = x_train[trainidx, :, :, :]
@@ -218,6 +250,7 @@ if PreTrain:
     print("Accuracy: %0.02f pct (%d of %d) right" % (acc, n_rig, n_tot))
 
 
+
 def plot_loss(losses):
         # display.clear_output(wait=True)
         # display.display(plt.gcf())
@@ -244,8 +277,12 @@ def plot_gen(n_ex=16,dim=(4,4), figsize=(8,8) ):
     # plt.show()
     plt.savefig(Dir0 + 'plots/generated_images'+fileOut+'.pdf')
 
+
+
+
 # set up loss storage vector
 losses = {"dis":[], "gen":[]}
+
 
 
 def train_for_n(nb_epoch=20, plt_frq=20, BATCH_SIZE=16):
@@ -280,6 +317,7 @@ def train_for_n(nb_epoch=20, plt_frq=20, BATCH_SIZE=16):
             plot_loss(losses)
             plot_gen()
 
+
 # K.set_value(opt.lr, 1e-5)
 # K.set_value(dopt.lr, 1e-6)
 train_for_n(nb_epoch= num_epoch, plt_frq= num_epoch, BATCH_SIZE=batch_size)
@@ -305,11 +343,12 @@ def plot_real(n_ex=16, dim=(4, 4), figsize=(8, 8)):
 
 plot_real()
 
+
 # plt.show()
 
-generator.save(Dir0+'ModelOutGAN/GANGenerate_' + fileOut + '.hdf5')
-discriminator.save(Dir0+'ModelOutGAN/GANdiscriminate_' + fileOut + '.hdf5')
-GAN.save(Dir0+'ModelOutGAN/GAN_' + fileOut + '.hdf5')
+generator.save(Dir0+'../ModelOutGAN/GANGenerate_' + fileOut + '.hdf5')
+discriminator.save(Dir0+'../ModelOutGAN/GANdiscriminate_' + fileOut + '.hdf5')
+GAN.save(Dir0+'../ModelOutGAN/GAN_' + fileOut + '.hdf5')
 # np.save('ModelOutEncode/Generate' + fileOut + '.npy', training_hist)
 
 
