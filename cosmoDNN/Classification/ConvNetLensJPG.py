@@ -1,5 +1,6 @@
 #!/usr/bin/python
 '''
+Author: Nesar Ramachandra 
 
 FOR cori runs
 

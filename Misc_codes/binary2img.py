@@ -1,4 +1,7 @@
 """
+
+Author: Nesar Ramachandra 
+
 Execute: python2.7 CreateData.py -i <subimages/> -o <DirOut> -n 10
 Ex: python2.7 CreateData.py -i rawData/ -o ./ -n 100
 

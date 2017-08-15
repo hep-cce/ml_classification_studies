@@ -1,5 +1,6 @@
 #!/usr/bin/python
 '''
+Author: Nesar Ramachandra 
 
 Adapted from cifar10_cnn.py
 

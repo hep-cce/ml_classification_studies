@@ -1,4 +1,9 @@
-""" Plots .data files """
+""" 
+Author: Nesar Ramachandra 
+
+Plots .data files 
+
+"""
 
 #import matplotlib
 #matplotlib.use('GTKAgg')   # On remote machine

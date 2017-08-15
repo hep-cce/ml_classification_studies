@@ -1,4 +1,7 @@
-"""  Convert .fits files files into (45,45) .npy files.
+"""  
+Author: Nesar Ramachandra 
+
+Convert .fits files files into (45,45) .npy files.
 Randomly shuffles the files and selects 20 per cent of the files for TestData.
 Note: Indices of .npy and .fits are NOT the same.
 
