@@ -1,4 +1,3 @@
-from keras.utils import np_utils
 from keras.models import Sequential
 from keras.layers.core import Dense, Dropout, Activation, Flatten
 from keras.layers.convolutional import Convolution2D, MaxPooling2D
@@ -50,7 +49,5 @@ def basic_model(num_classes = 2, learning_rate = 0.01, decay_rate = 0.0, opti_id
 		#rmsprop = RMSprop()
 		# lr = 0.001, rho = 0.9, epsilon = 1e-8, decay = 0.
 		model.compile(loss= 'categorical_crossentropy', optimizer=rmsprop, metrics=["accuracy"])
-
-	# model.compile(loss=loss_fn , optimizer='sgd', metrics=["accuracy"])
 
 	return model
