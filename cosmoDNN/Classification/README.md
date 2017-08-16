@@ -1,1 +1,5 @@
-# Module for binary classification - lensed and unlensed
+# ConvLens - Graviatational lensing study using convolutional neural network
+
+## Automated identification of galaxy-galaxy gravitational lensing implemented on Keras
+## Binary classification module is trainable on lensed and unlensed images
+
