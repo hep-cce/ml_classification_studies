@@ -114,7 +114,7 @@ if __name__ == "__main__":
     ##-------------------------------------------------------------------------------------
     ## Load data
 
-    lens = load_data.LensData(data_path = Dir1 + Dir2 + Dir3 + 'TrainingData/')
+    lens = load_train_data.LensData(data_path = Dir1 + Dir2 + Dir3 + 'TrainingData/')
     (X_train, y_train), (X_test, y_test) = lens.load_data()[:100]
 
     ##-------------------------------------------------------------------------------------
