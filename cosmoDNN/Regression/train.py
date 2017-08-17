@@ -4,6 +4,7 @@ Author: Nesar Ramachandra
 Implementation of regression using ConvNet. 
 Inverse problem finds 5 parameters corresponding to each image 
 
+Make changes to include number of parameters to be backtracked, and which ones
 
 '''
 
