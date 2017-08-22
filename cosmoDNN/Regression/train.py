@@ -51,7 +51,7 @@ train_split = 0.8   # 80 percent
 num_train = int(train_split*num_files)
 num_para = 5
 
-
+'''
 def load_train():
     img_data_list = []
     # labels = []
@@ -131,6 +131,30 @@ y_train = train_target[0:num_train]
 
 X_test = train_data[num_train:num_files,:,:,:]
 y_test = train_target[num_train:num_files]
+'''
+
+
+
+
+
+##-------------------------------------------------------------------------------------
+## Load data
+
+lens = load_train_data.LensData(data_path = Dir1 + Dir2 + Dir3 + 'TrainingData/')
+(X_train, y_train), (X_test, y_test) = lens.load_data()[:100]
+
+##-------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
 
 model = create_model()
 
