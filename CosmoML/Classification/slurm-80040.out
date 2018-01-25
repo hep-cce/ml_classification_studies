@@ -1,0 +1,102 @@
+[0] setting up environment
+2018-01-25 22:08:34.825805: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2018-01-25 22:08:34.825854: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2018-01-25 22:08:34.825867: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2018-01-25 22:08:34.825875: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+2018-01-25 22:08:34.825884: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+2018-01-25 22:08:36.003869: I tensorflow/core/common_runtime/gpu/gpu_device.cc:887] Found device 0 with properties: 
+name: Tesla P100-PCIE-16GB
+major: 6 minor: 0 memoryClockRate (GHz) 1.3285
+pciBusID 0000:83:00.0
+Total memory: 15.89GiB
+Free memory: 15.61GiB
+2018-01-25 22:08:36.003901: I tensorflow/core/common_runtime/gpu/gpu_device.cc:908] DMA: 0 
+2018-01-25 22:08:36.003907: I tensorflow/core/common_runtime/gpu/gpu_device.cc:918] 0:   Y 
+2018-01-25 22:08:36.003918: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Tesla P100-PCIE-16GB, pci bus id: 0000:83:00.0)
+Using TensorFlow backend.
+/cosmo/homes/nramachandra/lensJPG/ml_classification_studies/CosmoML/Classification/slurm-80040/model_architectures/model.py:14: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(32, (3, 3), input_shape=(45, 45, 1..., padding="same")`
+  model.add(Convolution2D(32, 3, 3,border_mode='same',input_shape=(image_size, image_size, 1)))
+/cosmo/homes/nramachandra/lensJPG/ml_classification_studies/CosmoML/Classification/slurm-80040/model_architectures/model.py:16: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(32, (3, 3))`
+  model.add(Convolution2D(32, 3, 3))
+/cosmo/homes/nramachandra/lensJPG/ml_classification_studies/CosmoML/Classification/slurm-80040/model_architectures/model.py:21: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(64, (3, 3))`
+  model.add(Convolution2D(64, 3, 3))
+/cosmo/homes/nramachandra/lensJPG/ml_classification_studies/CosmoML/Classification/slurm-80040/model_architectures/model.py:23: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(64, (3, 3))`
+  model.add(Convolution2D(64, 3, 3))
+(16000, 45, 45)
+(16000, 45, 45, 1)
+(16000, 45, 45, 1)
+[0 1 0 ..., 1 0 1]
+Train mean, sd: 0.177621 0.237504
+Train shape: (16000, 45, 45, 1)
+16000 train samples
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+conv2d_1 (Conv2D)            (None, 45, 45, 32)        320       
+_________________________________________________________________
+activation_1 (Activation)    (None, 45, 45, 32)        0         
+_________________________________________________________________
+conv2d_2 (Conv2D)            (None, 43, 43, 32)        9248      
+_________________________________________________________________
+activation_2 (Activation)    (None, 43, 43, 32)        0         
+_________________________________________________________________
+max_pooling2d_1 (MaxPooling2 (None, 21, 21, 32)        0         
+_________________________________________________________________
+dropout_1 (Dropout)          (None, 21, 21, 32)        0         
+_________________________________________________________________
+conv2d_3 (Conv2D)            (None, 19, 19, 64)        18496     
+_________________________________________________________________
+activation_3 (Activation)    (None, 19, 19, 64)        0         
+_________________________________________________________________
+conv2d_4 (Conv2D)            (None, 17, 17, 64)        36928     
+_________________________________________________________________
+activation_4 (Activation)    (None, 17, 17, 64)        0         
+_________________________________________________________________
+max_pooling2d_2 (MaxPooling2 (None, 8, 8, 64)          0         
+_________________________________________________________________
+dropout_2 (Dropout)          (None, 8, 8, 64)          0         
+_________________________________________________________________
+flatten_1 (Flatten)          (None, 4096)              0         
+_________________________________________________________________
+dense_1 (Dense)              (None, 64)                262208    
+_________________________________________________________________
+activation_5 (Activation)    (None, 64)                0         
+_________________________________________________________________
+dropout_3 (Dropout)          (None, 64)                0         
+_________________________________________________________________
+dense_2 (Dense)              (None, 2)                 130       
+_________________________________________________________________
+activation_6 (Activation)    (None, 2)                 0         
+=================================================================
+Total params: 327,330.0
+Trainable params: 327,330.0
+Non-trainable params: 0.0
+_________________________________________________________________
+None
+Implementing pre-process and (real-time) data-augmentation (Check default options)
+Epoch 1/10
+104s - loss: 0.6868 - acc: 0.5448 - val_loss: 0.6657 - val_acc: 0.5941
+Epoch 2/10
+10s - loss: 0.6735 - acc: 0.5798 - val_loss: 0.6699 - val_acc: 0.5647
+Epoch 3/10
+10s - loss: 0.6699 - acc: 0.5874 - val_loss: 0.6638 - val_acc: 0.5972
+Epoch 4/10
+10s - loss: 0.6641 - acc: 0.6000 - val_loss: 0.6507 - val_acc: 0.6209
+Epoch 5/10
+10s - loss: 0.6616 - acc: 0.6047 - val_loss: 0.6395 - val_acc: 0.6328
+Epoch 6/10
+10s - loss: 0.6595 - acc: 0.6107 - val_loss: 0.6432 - val_acc: 0.6322
+Epoch 7/10
+10s - loss: 0.6547 - acc: 0.6144 - val_loss: 0.6343 - val_acc: 0.6350
+Epoch 8/10
+10s - loss: 0.6525 - acc: 0.6221 - val_loss: 0.6382 - val_acc: 0.6528
+Epoch 9/10
+10s - loss: 0.6500 - acc: 0.6191 - val_loss: 0.6249 - val_acc: 0.6556
+Epoch 10/10
+10s - loss: 0.6450 - acc: 0.6280 - val_loss: 0.6197 - val_acc: 0.6634
+final acc - train and val
+0.62796875 0.6634375
+--------------------------------------------------
+247.0362958908081 seconds
+--------------------------------------------------
+[257] job completed
