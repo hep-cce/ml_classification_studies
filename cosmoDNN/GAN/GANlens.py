@@ -53,7 +53,7 @@ data_augmentation = True
 
 batch_size = 32
 num_classes = 2
-num_epoch = 2000
+num_epoch = 100  #2000
 pre_train_size = 200
 filter_factor = 40
 learning_rate_gen = 1e-4  # Warning: lr and decay vary across optimizers
@@ -68,8 +68,8 @@ loss_id = 0 # [mse, mae] # mse is always better
 
 
 
-Dir0 = '../'
-Dir1 = Dir0 + '../AllTrainTestSets/Encoder/'
+Dir0 = '../../../'
+Dir1 = Dir0 + 'AllTrainTestSets/Encoder/'
 #Dir0 = './'
 #Dir1 = '/home/nes/Desktop/ConvNetData/lens/Encoder/'
 Dir2 = ['single/', 'stack/'][1]
@@ -259,7 +259,7 @@ def plot_loss(losses):
         plt.plot(losses["gen"], label='generative loss')
         plt.legend()
         # plt.show()
-        plt.savefig(Dir0 +'plots/loss'+fileOut +'.pdf')
+        plt.savefig('plots/loss'+fileOut +'.pdf')
 
 
 def plot_gen(n_ex=16,dim=(4,4), figsize=(8,8) ):
@@ -275,7 +275,7 @@ def plot_gen(n_ex=16,dim=(4,4), figsize=(8,8) ):
         plt.axis('off')
     plt.tight_layout()
     # plt.show()
-    plt.savefig(Dir0 + 'plots/generated_images'+fileOut+'.pdf')
+    plt.savefig('plots/generated_images'+fileOut+'.pdf')
 
 
 
@@ -287,7 +287,7 @@ losses = {"dis":[], "gen":[]}
 
 def train_for_n(nb_epoch=20, plt_frq=20, BATCH_SIZE=16):
     for e in (range(nb_epoch)):
-
+        print("epoch: %d" %e)
         # Make generative images
         image_batch = x_train[np.random.randint(0, x_train.shape[0], size=BATCH_SIZE), :, :, :]
         noise_gen = np.random.uniform(0, 1, size=[BATCH_SIZE, 100])
@@ -337,7 +337,7 @@ def plot_real(n_ex=16, dim=(4, 4), figsize=(8, 8)):
         plt.imshow(img)
         plt.axis('off')
     plt.tight_layout()
-    plt.savefig(Dir0 +'plots/real_images'+fileOut+'.pdf')
+    plt.savefig('plots/real_images'+fileOut+'.pdf')
     # plt.show()
 
 
@@ -346,9 +346,9 @@ plot_real()
 
 # plt.show()
 
-generator.save(Dir0+'../ModelOutGAN/GANGenerate_' + fileOut + '.hdf5')
-discriminator.save(Dir0+'../ModelOutGAN/GANdiscriminate_' + fileOut + '.hdf5')
-GAN.save(Dir0+'../ModelOutGAN/GAN_' + fileOut + '.hdf5')
+generator.save('/ModelOutGAN/GANGenerate_' + fileOut + '.hdf5')
+discriminator.save('ModelOutGAN/GANdiscriminate_' + fileOut + '.hdf5')
+GAN.save('ModelOutGAN/GAN_' + fileOut + '.hdf5')
 # np.save('ModelOutEncode/Generate' + fileOut + '.npy', training_hist)
 
 
