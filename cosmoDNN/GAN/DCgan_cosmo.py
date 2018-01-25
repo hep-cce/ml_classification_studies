@@ -319,7 +319,7 @@ if __name__ == "__main__":
     num_epoch = 5
 
 
-    Dir0 = '../../'
+    Dir0 = '../../../'
     #Dir0 = '/home/nes/Desktop/ConvNetData/lens/'
     Dir1 = Dir0 + 'AllTrainTestSets/JPG/'
     Dir2 = ['single/', 'stack/'][1]
