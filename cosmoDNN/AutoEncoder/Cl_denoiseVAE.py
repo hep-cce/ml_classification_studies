@@ -240,7 +240,7 @@ np.save(Dir0+'Cl_data/Data/encoded_xtrain_'+str(totalFiles)+'.npy', x_train_enco
 # ----------------------------------------------------------------------------
 ls = np.load(Dir0+'Cl_data/Data/ls_'+str(totalFiles)+'.npy')[2:]
 
-PlotSample = True
+PlotSample = False
 if PlotSample:
     for i in range(3,10):
         plt.figure(91, figsize=(8,6))
@@ -253,7 +253,7 @@ if PlotSample:
     plt.show()
 
 
-plotLoss = True
+plotLoss = False
 if plotLoss:
     import matplotlib.pylab as plt
 
@@ -276,7 +276,7 @@ if plotLoss:
 
 plt.show()
 
-SaveModel = True
+SaveModel = False
 if SaveModel:
     epochs = np.arange(1, num_epochs+1)
     train_loss = vae.history.history['loss']
@@ -293,7 +293,7 @@ if SaveModel:
     np.save(Dir0+'Cl_data/Model/TrainingHistory_'+fileOut+'.npy', training_hist)
 
 
-PlotModel = True
+PlotModel = False
 if PlotModel:
     from keras.utils.vis_utils import plot_model
     fileOut = Dir0+'Cl_data/Plots/ArchitectureFullAE.png'
