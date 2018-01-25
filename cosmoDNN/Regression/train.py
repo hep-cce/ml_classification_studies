@@ -28,7 +28,8 @@ data_augmentation = True
 
 time_i = time.time()
 
-Dir1 = '../../AllTrainTestSets/JPG/'
+Dir0 = '../../../../'
+Dir1 = Dir0+'AllTrainTestSets/JPG/'
 Dir2 = ['single/', 'stack/'][1]
 Dir3 = ['0/', '1/'][1]
 data_path = Dir1 + Dir2 + Dir3 + 'TrainingData/'

@@ -44,8 +44,8 @@ decay_rate = 0.0
 opti_id = 1  # [SGD, Adam, Adadelta, RMSprop]
 loss_id = 0 # [mse, mae] # mse is always better
 
-
-Dir1 = '../../AllTrainTestSets/Encoder/'
+Dir0 = '../../../'
+Dir1 = Dir0 + 'AllTrainTestSets/Encoder/'
 Dir2 = ['single/', 'stack/'][1]
 data_path = Dir1 + Dir2
 

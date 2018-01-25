@@ -53,7 +53,7 @@ data_augmentation = True
 
 batch_size = 32
 num_classes = 2
-num_epoch = 100  #2000
+num_epoch = 1000  #2000
 pre_train_size = 200
 filter_factor = 40
 learning_rate_gen = 1e-4  # Warning: lr and decay vary across optimizers
@@ -287,7 +287,7 @@ losses = {"dis":[], "gen":[]}
 
 def train_for_n(nb_epoch=20, plt_frq=20, BATCH_SIZE=16):
     for e in (range(nb_epoch)):
-        print("epoch: %d" %e)
+        if (e%100==0): print("epoch: %d" %e)
         # Make generative images
         image_batch = x_train[np.random.randint(0, x_train.shape[0], size=BATCH_SIZE), :, :, :]
         noise_gen = np.random.uniform(0, 1, size=[BATCH_SIZE, 100])

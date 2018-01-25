@@ -1,0 +1,19 @@
+[0] setting up environment
+cp: cannot stat ‘../__init__.py’: No such file or directory
+cp: cannot stat ‘../trained_models’: No such file or directory
+(16000, 45, 45)
+(16000, 45, 45, 1)
+(16000, 45, 45, 1)
+Using TensorFlow backend.
+Traceback (most recent call last):
+  File "train.py", line 145, in <module>
+    (X_train, y_train), (X_test, y_test) = lens.load_data()[:100]
+  File "/cosmo/homes/nramachandra/lensJPG/ml_classification_studies/cosmoDNN/Regression/slurm-80030/load_train_data.py", line 108, in load_data
+    train_data, train_target = self.normalize_data()
+  File "/cosmo/homes/nramachandra/lensJPG/ml_classification_studies/cosmoDNN/Regression/slurm-80030/load_train_data.py", line 93, in normalize_data
+    train_data, train_target = self.input_images()
+  File "/cosmo/homes/nramachandra/lensJPG/ml_classification_studies/cosmoDNN/Regression/slurm-80030/load_train_data.py", line 82, in input_images
+    labels = np.load(data_path + 'Train5para.npy')
+NameError: name 'data_path' is not defined
+srun: error: cp2-p: task 0: Exited with exit code 1
+[51] job completed

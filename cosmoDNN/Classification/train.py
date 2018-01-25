@@ -17,12 +17,11 @@ from keras.preprocessing.image import ImageDataGenerator
 from model_architectures import basic_model
 import load_train_data
 
+time_i = time.time()
 
 def train(model, X_train, y_train, num_epoch = 200, batch_size = 32, train_val_split = 0.2,
           DataAugmentation = True):
 
-
-    time_i = time.time()
 
     if DataAugmentation:
 
@@ -55,8 +54,8 @@ def train(model, X_train, y_train, num_epoch = 200, batch_size = 32, train_val_s
         # ModelFit = model.fit(X_train, y_train, batch_size= batch_size, nb_epoch=num_epoch, verbose=1, validation_data=(X_test, y_test))
 
 
-        time_j = time.time()
-        print('Training time:  ', time_j - time_i, 'seconds')
+        # time_j = time.time()
+        # print('Training time:  ', time_j - time_i, 'seconds')
 
     return ModelFit
 
@@ -134,6 +133,11 @@ if __name__ == "__main__":
     saveModel(ModelFit, fileOut)
 
     #--------------------------------------------------------------------------------------------------
+    
+    print (50 * '-')
+    time_j = time.time()
+    print(time_j - time_i, 'seconds')
+    print (50 * '-')
 
 
 
