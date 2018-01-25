@@ -346,7 +346,7 @@ plot_real()
 
 # plt.show()
 
-generator.save('/ModelOutGAN/GANGenerate_' + fileOut + '.hdf5')
+generator.save('ModelOutGAN/GANGenerate_' + fileOut + '.hdf5')
 discriminator.save('ModelOutGAN/GANdiscriminate_' + fileOut + '.hdf5')
 GAN.save('ModelOutGAN/GAN_' + fileOut + '.hdf5')
 # np.save('ModelOutEncode/Generate' + fileOut + '.npy', training_hist)
